@@ -16,6 +16,9 @@ contract Miner {
     uint public minimumDeposit = 10;
     uint public maximumDeposit = 500;
     uint public mineDuration = 86400; // 24 hours timestamp
+    uint public referralPercentage = 10;
+    address public devAddress; 
+    address public taxAddress; 
     bool public isMinerRunning = false;
     struct userInfo {
         uint miners;
@@ -26,12 +29,16 @@ contract Miner {
         uint lastCompoundTime;
         uint totalTokensMined;
         uint currentTokensMined;
+        address referral;
+        uint referralBonus;
     }
     mapping(address => userInfo) public user;
 
     constructor(ERC20 _mainToken) {
         mainToken = _mainToken;
         owner = msg.sender;
+        devAddress = msg.sender;
+        taxAddress = msg.sender;
     }
 
     modifier onlyOwner() {
@@ -60,14 +67,31 @@ contract Miner {
         addDepositToUser(amount);
     }
 
-    function deposit(uint amount) public isRunning {
+    function deposit(uint amount, address ref) public isRunning {
         require(minimumDeposit <= amount && maximumDeposit >= amount,"Deposit amount out of specified range");
         busd.transferFrom(msg.sender, address(this), amount);
+        
         uint currentMiners = ((amount / 1e18) * busdMinerRate) / 2;
         totalMiners += currentMiners;
         user[msg.sender].miners += currentMiners;
         addDepositToUser(amount);
+        // check and transfer referral bonus
+        transferReferralBonus(amount, msg.sender, ref);
         updateBusdMinerRate();
+    }
+
+    function transferReferralBonus(uint _amount, address _user, address ref) private {
+        // if this is the user's first deposit then set his upline
+        if(user[_user].totalDeposit == 0){
+            user[_user].referral = ref != address(0) ? ref : devAddress;
+        }
+        // make the transfer
+        uint _transferAmount = ((referralPercentage *1e18) * _amount) / (100 * 1e18);
+        busd.transfer(ref, _transferAmount);
+
+        // update the refs referral bonus
+        user[ref].referralBonus += _transferAmount;
+
     }
 
     function mineTokens() public isRunning hasDeposit {
@@ -182,6 +206,16 @@ contract Miner {
     function setDepositRange(uint _min, uint _max) public onlyOwner {
         minimumDeposit = _min;
         maximumDeposit = _max;
+    }
+    function setReferralPercentage(uint _referralPercentage) public onlyOwner {
+        referralPercentage = _referralPercentage;
+    }
+
+    function setDevAddress(address _devAddress) public onlyOwner {
+        devAddress = _devAddress;
+    }
+    function setTaxAddress(address _taxAddress) public onlyOwner {
+        taxAddress = _taxAddress;
     }
 
     function mainTokenBalance() public view returns (uint) {
