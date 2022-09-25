@@ -1,0 +1,136 @@
+await endUserSign.withdraw(10000)
+await endUserSign.mineTokens()
+await miner.totalMiners()
+await miner.user(endUser.address)
+await endUserSign.deposit('100000000000000000000')
+await endUserSign.deposit('1000000000000000000')
+await miner.setDepositRange("10000000000000000000","500000000000000000000")
+await endUserSign.deposit('100000000000000000000')
+let endUserSign = await miner.connect(endUser)
+await miner.launch('10000000000000000000')
+miner.address
+await miner.launch('10000000000000000000')
+const miner = await contract.deploy("0x531Fc9A2a96A1e6463e9866Cf55f9E403D59500a")
+const contract = await ethers.getContractFactory("Miner")
+const [deployer,acct1,acct2,endUser] = await ethers.getSigners()
+await endUserSign.mineTokens()
+await miner.user(endUser.address)
+await endUserSign.mineTokens()
+await miner.totalMiners()
+await miner.user(endUser.address)
+await endUserSign.deposit('50000000000000000000')
+await miner.user(endUser.address)
+await miner.totalMiners()
+await endUserSign.deposit('50000000000000000000')
+let endUserSign = await miner.connect(endUser)
+await miner.totalMiners()
+await miner.user(deployer.address)
+await miner.launch('10000000000000000000')
+miner.address
+const miner = await contract.deploy("0x531Fc9A2a96A1e6463e9866Cf55f9E403D59500a")
+const contract = await ethers.getContractFactory("Miner")
+const [deployer,acct1,acct2,endUser] = await ethers.getSigners()
+await miner.user(endUser.address)
+await miner.totalMiners()
+await endUserSign.deposit('50000000000000000000')
+let endUserSign = await miner.connect(endUser)
+await miner.user(deployer.address)
+await miner.user(deployer)
+await miner.totalMiners()
+await miner.totalMiners
+await miner.launch('10000000000000000000')
+await miner.launch
+miner.address
+const miner = await contract.deploy("0x531Fc9A2a96A1e6463e9866Cf55f9E403D59500a")
+const contract = await ethers.getContractFactory("Miner")
+const [deployer,acct1,acct2,endUser] = await ethers.getSigners()
+await minerContract.totalMiners()
+userInfo = await minerContract.user("0x6582a99A9aF351d34646A7367F4c7ff4e0c1B153")
+newAcctInfo
+let newAcctInfo = minerContract.user("0x997f64a8DB6c58877432CfC3B8577ddf9b3A9Cb9")
+let dep = await newAcctDeposit.deposit("50000000000000000000")
+let newAcctDeposit = await minerContract.connect(newAcct)
+minerContract.address
+newAcct.address
+const [deploye] = await ethers.getSigners()
+const [deployer] = await ethers.getSigners()
+const newAcct
+const [acct1,acct2,acct3,newAcct] = await ethers.getSigners()
+const [,,,newAcct] = await ethers.getSigners()
+userInfo
+let userInfo = await minerContract.user("0x6582a99A9aF351d34646A7367F4c7ff4e0c1B153")
+const tM = await minerContract.totalMiners()
+const mR = await minerContract.busdMinerRate()
+minerRate
+const minerRate = minerContract.busdMinerRate
+minerContract.launch('10000000000000000000')
+minerContract.address
+const minerContract = await contract.deploy("0x531Fc9A2a96A1e6463e9866Cf55f9E403D59500a")
+const miner = await contract.deploy("0x531Fc9A2a96A1e6463e9866Cf55f9E403D59500a")
+const contract = await ethers.getContractFactory("Miner")
+const [deployer] =  await ethers.getSigners()
+const miner = contract.deploy("0x531Fc9A2a96A1e6463e9866Cf55f9E403D59500a")
+const contract = await ethers.getContractFactory("Miner")
+tM
+const tM = await miner.totalMiners()
+const totalMiners = await miner.totalMiners
+busdMinerRate
+const busdMinerRate = await miner.busdMinerRate()
+miner.busdMinerRate()
+miner.busdMinerRate
+balance
+balance = await miner.busdBalance()
+balance = miner.busdBalance()
+balance = await miner.busdBalance()
+let balance = await miner.busdBalance()
+let balance = miner.busdBalance()
+miner.busdBalance()
+miner.busdBalance
+let minerLaunch = await miner.launch('100000000000000000000')
+miner.address
+const miner = await contract.deploy("0x531Fc9A2a96A1e6463e9866Cf55f9E403D59500a")
+const contract = await ethers.getContractFactory("Miner")
+const [deployer] =  await ethers.getSigners()
+const [deployer] =  await ethers.getSigners
+minerLaunch = await miner.launch('10000000000000000000')
+minerLaunch = await miner.launch(10000000000000000000)
+minerLaunch = await miner.launch(BigNumber(10).pow(18))
+let minerLaunch = await miner.launch(BigNumber(10).pow(18))
+let minerLaunch = await miner.launch(10000000000000000000)
+miner.address
+miner.launch(1000000000)
+miner.address
+const miner = await contract.deploy("0x531Fc9A2a96A1e6463e9866Cf55f9E403D59500a")
+const contract = await ethers.getContractFactory("Miner")
+deployer
+const [deployer] =  await ethers.getSigners()
+const [deployer] =  await ethers.getSigners
+deployers
+const deployers = await ethers.getSigners()
+deployer
+const [deployer] = await ethers.getSigners()
+const [deployer] = awaitethers.getSigners()
+const [deployer] = ethers.getSigners()
+.exit
+exit
+contractExec = await minerContract.owner()
+contractExec = await minerContract.transferOwnership("0x997f64a8DB6c58877432CfC3B8577ddf9b3A9Cb9")
+contractExec = await minerContract.owner()
+contractExec = await minerContract.getOwner()
+let contractExec = await minerContract.getOwne
+contractExec
+let contractExec = await minerContract.owner
+minerContract.owner
+minerBal
+let minerBal = await minerContract.mainTokenBalance()
+minerContract
+const minerContract = await Contract.deploy("0x78867BbEeF44f2326bF8DDd1941a4439382EF2A7")
+Contract
+const Contract = await ethers.getContractFactory("Miner")
+owner
+const [owner] = await ethers.getSigners()
+accounts
+const accounts = await ethers.getSigners()
+ethers.getSigners()
+ethers.getSigners
+ethers
