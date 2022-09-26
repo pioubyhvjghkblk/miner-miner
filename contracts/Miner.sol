@@ -2,10 +2,12 @@
 pragma solidity ^0.8.9;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import "hardhat/console.sol";
 
 contract Miner {
     ERC20 public mainToken;
-    ERC20 public busd = ERC20(0x78867BbEeF44f2326bF8DDd1941a4439382EF2A7); // busd testnet
+    // ERC20 public busd = ERC20(0x78867BbEeF44f2326bF8DDd1941a4439382EF2A7); // busd testnet
+    ERC20 public busd; // busd testnet
     address public owner;
     uint public totalMiners;
     uint public busdMinerRate;
@@ -18,7 +20,8 @@ contract Miner {
     uint public mineDuration = 86400; // 24 hours timestamp
     uint public referralPercentage = 10;
     address public devAddress; 
-    address public taxAddress; 
+    address public taxAddress;
+    address public zeroAddress = 0x0000000000000000000000000000000000000000;
     bool public isMinerRunning = false;
     struct userInfo {
         uint miners;
@@ -34,11 +37,13 @@ contract Miner {
     }
     mapping(address => userInfo) public user;
 
-    constructor(ERC20 _mainToken) {
+    constructor(ERC20 _mainToken, ERC20 _busd) {
         mainToken = _mainToken;
+        busd = _busd;
         owner = msg.sender;
         devAddress = msg.sender;
         taxAddress = msg.sender;
+        console.log("Deployed");
     }
 
     modifier onlyOwner() {
@@ -82,15 +87,17 @@ contract Miner {
 
     function transferReferralBonus(uint _amount, address _user, address ref) private {
         // if this is the user's first deposit then set his upline
-        if(user[_user].totalDeposit == 0){
-            user[_user].referral = ref != address(0) ? ref : devAddress;
+        if(user[_user].referral == zeroAddress){
+            user[_user].referral = ref != zeroAddress ? ref : devAddress;
         }
+        console.log("Referral address is %s ",user[_user].referral);
         // make the transfer
         uint _transferAmount = ((referralPercentage *1e18) * _amount) / (100 * 1e18);
-        busd.transfer(ref, _transferAmount);
+        busd.approve(address(this), _amount);
+        busd.transferFrom(address(this),user[_user].referral, _transferAmount);
 
         // update the refs referral bonus
-        user[ref].referralBonus += _transferAmount;
+        user[user[_user].referral].referralBonus += _transferAmount;
 
     }
 
