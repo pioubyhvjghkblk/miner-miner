@@ -15,8 +15,8 @@ contract Miner {
     uint public busdDailyPercentage = 3;
     uint public minimumCompoundRequired = 7;
     uint public minimumDaysRequired = 7;
-    uint public minimumDeposit = 10;
-    uint public maximumDeposit = 500;
+    uint public minimumDeposit = 10 * 1e18;
+    uint public maximumDeposit = 500 * 1e18;
     uint public mineDuration = 86400; // 24 hours timestamp
     uint public referralPercentage = 10;
     address public devAddress; 
