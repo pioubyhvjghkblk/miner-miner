@@ -5,8 +5,8 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract Token is ERC20, Ownable {
-    constructor() ERC20("Vest BUSD", "VBUSD") {
-        _mint(msg.sender, 1000000000 * 10 ** decimals());
+    constructor(string memory _name,string memory _symbol) ERC20(_name, _symbol) {
+        _mint(msg.sender, 1_000_000_000 * 10 ** decimals());
     }
 
     function mint(address to, uint256 amount) public onlyOwner {

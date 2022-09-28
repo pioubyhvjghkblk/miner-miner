@@ -16,7 +16,7 @@ contract Miner {
     uint public minimumCompoundRequired = 7;
     uint public minimumDaysRequired = 7;
     uint public minimumDeposit = 10 * 1e18;
-    uint public maximumDeposit = 150000000 * 1e18;
+    uint public maximumDeposit = 500 * 1e18;
     uint public mineDuration = 86400; // 24 hours timestamp
     uint public referralPercentage = 10;
     address public devAddress; 
@@ -168,7 +168,7 @@ contract Miner {
     function claimTokens(address _user) private {
         // claim mined tokens
         // calculate the tokens mined based on the mining rate and multiply by mineDuration converted to hours
-        uint tokenMined = ((minerTokenRate * user[_user].miners) / 100) * (mineDuration / 3600);
+        uint tokenMined = (((minerTokenRate * user[_user].miners) / 100) * (mineDuration / 3600)) * 1e18;
         user[_user].totalTokensMined += tokenMined;
         user[_user].currentTokensMined += tokenMined;
     }
